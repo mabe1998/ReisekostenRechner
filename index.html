@@ -7,7 +7,44 @@
 </head>
 <body>
 
+<h1>Womit fährst du?</h1>
+<form>
+    Wähle das Fortbewegungsmittel:<br>
+    <select ng-model="fahrzeug">
+        <option value="">
+        <option value="car">Auto
+        <option value="plane">Flugzeug
+        <option value="train">Zug
+    </select>
+    <br>Preis:
+    <div>
+        <input type="number" ng-model="cost.fahrzeug">
+    </div>
+</form>
+<h1>Wo übernachtest du?</h1>
+<form>
+    Wähle deine Bleibe:<br>
+    <select ng-model="unterkunft">
+        <option value="">
+        <option value="hotel">Hotel
+        <option value="hostel">Hostel
+        <option value="jugend">Jugendherberge
+    </select>
+    <br>Preis für Unterkunft:
+    <div>
+        <input type="number" ng-model="cost.unterkunft">
+    </div>
+    <br>Preis für Verpflegung:
+    <div>
+        <input type="number" ng-model="cost.verpflegung">
+    </div>
+</form>
+<br>
+<br>
+<form>
+    Der Preis für die Reise beläuft sich auf: {{cost.total}}
 
+</form>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
