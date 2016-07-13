@@ -6,44 +6,62 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
-
-<h1>Womit fährst du?</h1>
 <form>
-    Wähle das Fortbewegungsmittel:<br>
-    <select ng-model="fahrzeug">
-        <option value="">
-        <option value="car">Auto
-        <option value="plane">Flugzeug
-        <option value="train">Zug
-    </select>
-    <br>Preis:
-    <div>
-        <input type="number" ng-model="cost.fahrzeug">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Beförderung</h3>
+        </div>
+        <div class="panel-body">
+            Fortbewegungsmittel:<br>
+            <select ng-model="fahrzeug">
+                <option value="">
+                <option value="car">Auto
+                <option value="plane">Flugzeug
+                <option value="train">Zug
+                <option valie="taxi">Taxi
+            </select>
+            <br>Preis:
+            <div>
+                <input type="number" ng-model="cost.fahrzeug">
+            </div>
+        </div>
     </div>
 </form>
-<h1>Wo übernachtest du?</h1>
 <form>
-    Wähle deine Bleibe:<br>
-    <select ng-model="unterkunft">
-        <option value="">
-        <option value="hotel">Hotel
-        <option value="hostel">Hostel
-        <option value="jugend">Jugendherberge
-    </select>
-    <br>Preis für Unterkunft:
-    <div>
-        <input type="number" ng-model="cost.unterkunft">
-    </div>
-    <br>Preis für Verpflegung:
-    <div>
-        <input type="number" ng-model="cost.verpflegung">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Wo übernachtest du?</h3>
+        </div>
+        <div class="panel-body">
+            Wähle deine Bleibe:<br>
+            <select ng-model="unterkunft">
+                <option value="">
+                <option value="hotel">Hotel
+                <option value="hostel">Hostel
+                <option value="jugend">Jugendherberge
+            </select>
+            <br>Preis für Unterkunft:
+            <div>
+                <input type="number" ng-model="cost.unterkunft">
+            </div>
+            <br>Preis für Verpflegung:
+            <div>
+                <input type="number" ng-model="cost.verpflegung">
+            </div>
+        </div>
     </div>
 </form>
 <br>
 <br>
 <form>
-    Der Preis für die Reise beläuft sich auf: {{cost.total}}
-
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Der Preis für die Reise beläuft sich auf:</h3>
+        </div>
+        <div class="panel-body">
+            {{cost.total}}
+        </div>
+    </div>
 </form>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
