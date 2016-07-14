@@ -6,39 +6,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
+
 <form>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Eckdaten</h3>
+        </div>
+        <div class="panel-body">
+            Name:<br>            <input type="text" ng-model="name"/><br>
+            Begin der Reise:<br> <input type="date" ng-model="date.a"> Uhrzeit: <input type="time" ng-model="time.a"><br>
+            Rückkehr:<br>        <input type="date" ng-model="date.b"> Uhrzeit: <input type="time" ng-model="time.b"><br>
+            Grund der Reise:<br> <input type="text" ng-model="reason"/><br>
+            Reiseziel: <br>      <input type="text" ng-model="desination"/><br>
+        </div>
+    </div>
+    
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Beförderung</h3>
         </div>
         <div class="panel-body">
-            Fortbewegungsmittel:<br>
-            <select ng-model="fahrzeug">
-                <option value="">
-                <option value="car">Auto
-                <option value="plane">Flugzeug
-                <option value="train">Zug
-                <option valie="taxi">Taxi
-            </select>
-            <br>Preis:
-            <div>
-                <input type="number" ng-model="cost.fahrzeug">
-            </div>
+            Fortbewegungsmittel:<br><br>
+            Mit eigenem Fahrzeug gefahren:<br><input type="number" ng-model="drive.car"/>km (á 0.30 Euro)
+            <br>
+            Mit Bahn:<br><input type="number" ng-model="drive.train"/>Euro
+            <br>
+            Mit Taxi:<br><input type="number" ng-model="drive.taxi"/>Euro
+            <br>
+            Mit Flugzeug:<br><input type="number" ng-model="drive.plane"/>Euro
+            <br>
+            Sonstiges:<br><input type="number" ng-model="drive.other"/>Euro
+            <br>
         </div>
     </div>
-</form>
-<form>
+
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Wo übernachtest du?</h3>
+            <h3 class="panel-title">Unterkunft</h3>
         </div>
         <div class="panel-body">
-            Wähle deine Bleibe:<br>
+            Übernachtungsort:<br>
             <select ng-model="unterkunft">
                 <option value="">
                 <option value="hotel">Hotel
                 <option value="hostel">Hostel
                 <option value="jugend">Jugendherberge
+                <option value="other">andere
             </select>
             <br>Preis für Unterkunft:
             <div>
@@ -50,10 +63,9 @@
             </div>
         </div>
     </div>
-</form>
-<br>
-<br>
-<form>
+
+    <br><br>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Der Preis für die Reise beläuft sich auf:</h3>
