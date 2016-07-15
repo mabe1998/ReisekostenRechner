@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>RKR</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 </head>
 <body>
-<form>
+<form ng-controller="CalculationController" ng-app="calculation">
     <div class="container">
         <h1>Reisekosten Inland</h1>
         <div class="panel panel-default">
@@ -20,17 +21,16 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Begin der Reise:<br> <input type="date" ng-model="date.a" placeholder="tt.mm.yy"></div>
-                    <div class="col-sm-2"> Uhrzeit: <input type="time" ng-model="time.a" placeholder="hh:mm">Uhr<br></div>
+                    <div class="col-sm-2"> Uhrzeit: <input type="time" ng-model="time.a" placeholder="hh:mm"><br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Rückkehr:<br><input type="date" ng-model="date.b" placeholder="tt.mm.yy"></div>
-                    <div class="col-sm-2">Uhrzeit: <input type="time" ng-model="time.b" placeholder="hh:mm">Uhr<br></div>
+                    <div class="col-sm-2">Uhrzeit: <input type="time" ng-model="time.b" placeholder="hh:mm"><br></div>
                 </div>
-                Grund der Reise:<br> <input type="text" ng-model="reason"/><br>
-                Reiseziel: <br>      <input type="text" ng-model="destination"/><br>
+                Grund der Reise:<br><input type="text" ng-model="reason"/><br>
+                Reiseziel: <br><input type="text" ng-model="destination"/><br>
             </div>
         </div>
-
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Beförderung</h3>
@@ -100,24 +100,35 @@
                 <input type="number" ng-model="pauschale.days" placeholder="0"/>Tage<br>
             </div>
         </div>
-
-        <br><br>
-
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Der Preis für die Reise beläuft sich auf:</h3>
+                <h3 class="panel-title">Preis:</h3>
             </div>
             <div class="panel-body">
-                {{cost.total}}
+                <div class="row">
+                    <div class="col-sm-2">Beförderungskosten:</div>
+                    <div class="col-sm-1">{{$scope.getTotalFortbewegung}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Übernachtungskosten:</div>
+                    <div class="col-sm-1">{{}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Pauschalkosten:</div>
+                    <div class="col-sm-1">{{}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Totalkosten:</div>
+                    <div class="col-sm-1">{{}}</div>
+                </div>
             </div>
         </div>
     </div>
 </form>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script type="text/javascript" src="app.js"></script>
 
 </body>
 </html>
