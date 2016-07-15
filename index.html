@@ -6,72 +6,110 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
-
 <form>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Eckdaten</h3>
-        </div>
-        <div class="panel-body">
-            Name:<br>            <input type="text" ng-model="name"/><br>
-            Begin der Reise:<br> <input type="date" ng-model="date.a"> Uhrzeit: <input type="time" ng-model="time.a"><br>
-            Rückkehr:<br>        <input type="date" ng-model="date.b"> Uhrzeit: <input type="time" ng-model="time.b"><br>
-            Grund der Reise:<br> <input type="text" ng-model="reason"/><br>
-            Reiseziel: <br>      <input type="text" ng-model="desination"/><br>
-        </div>
-    </div>
-    
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Beförderung</h3>
-        </div>
-        <div class="panel-body">
-            Fortbewegungsmittel:<br><br>
-            Mit eigenem Fahrzeug gefahren:<br><input type="number" ng-model="drive.car"/>km (á 0.30 Euro)
-            <br>
-            Mit Bahn:<br><input type="number" ng-model="drive.train"/>Euro
-            <br>
-            Mit Taxi:<br><input type="number" ng-model="drive.taxi"/>Euro
-            <br>
-            Mit Flugzeug:<br><input type="number" ng-model="drive.plane"/>Euro
-            <br>
-            Sonstiges:<br><input type="number" ng-model="drive.other"/>Euro
-            <br>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Unterkunft</h3>
-        </div>
-        <div class="panel-body">
-            Übernachtungsort:<br>
-            <select ng-model="unterkunft">
-                <option value="">
-                <option value="hotel">Hotel
-                <option value="hostel">Hostel
-                <option value="jugend">Jugendherberge
-                <option value="other">andere
-            </select>
-            <br>Preis für Unterkunft:
-            <div>
-                <input type="number" ng-model="cost.unterkunft">
+    <div class="container">
+        <h1>Reisekosten Inland</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Eckdaten</h3>
             </div>
-            <br>Preis für Verpflegung:
-            <div>
-                <input type="number" ng-model="cost.verpflegung">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-1">Name:<br></div>
+                    <div class="col-sm-1"><input type="text" ng-model="name" placeholder="Mustermann, Max"/><br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Begin der Reise:<br> <input type="date" ng-model="date.a" placeholder="tt.mm.yy"></div>
+                    <div class="col-sm-2"> Uhrzeit: <input type="time" ng-model="time.a" placeholder="hh:mm">Uhr<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Rückkehr:<br><input type="date" ng-model="date.b" placeholder="tt.mm.yy"></div>
+                    <div class="col-sm-2">Uhrzeit: <input type="time" ng-model="time.b" placeholder="hh:mm">Uhr<br></div>
+                </div>
+                Grund der Reise:<br> <input type="text" ng-model="reason"/><br>
+                Reiseziel: <br>      <input type="text" ng-model="desination"/><br>
             </div>
         </div>
-    </div>
 
-    <br><br>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Der Preis für die Reise beläuft sich auf:</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Beförderung</h3>
+            </div>
+            <div class="panel-body">
+                Fortbewegungsmittel:<br><br>
+                <div class="row">
+                    <div class="col-sm-2">Mit eigenem Fahrzeug:<br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="drive.car" placeholder="0"/>km (á 0.30 Euro)<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Mit Bahn:<br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="drive.train" placeholder="0"/>Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Mit Taxi:<br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="drive.taxi" placeholder="0"/>Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Mit Flugzeug:<br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="drive.plane" placeholder="0"/>Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Sonstiges:<br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="drive.other" placeholder="0"/>Euro<br></div>
+                </div>
+            </div>
         </div>
-        <div class="panel-body">
-            {{cost.total}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Übernachtungskosten</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-4">Übernachtung mit Frühstück (nicht ausgewiesen):<br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="sleepover.+breakfast" placeholder="0"/>Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">Übernachtung mit Frühstück (wert ohne Frühstück):<br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="sleepover.(+)breakfast" placeholder="0"/>Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">Übernachtung ohne Frühstück: <br></div>
+                    <div class="col-sm-4"><input type="number" ng-model="sleepover.-breakfast" placeholder="0"/>Euro<br></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Pauschale für Mehraufwand für Verpflegung</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">Volle Reisetage á 24 Euro:<br></div>
+                    <div class="col-sm-3"><input type="number" ng-model="cost.fullday" placeholder="0"/>Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">Erster Reisetag á 12 Euro:<br></div>
+                    <div class="col-sm-3"><input type="number" ng-model="cost.firstday" placeholder="0"/>Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">Letzter Reisetag á 12 Euro:<br></div>
+                    <div class="col-sm-3"> <input type="number" ng-model="cost.lastday" placeholder="0"/>Euro<br></div>
+                </div>
+                <br>
+                Pauschale bei Übernahme durch Arbeitgeber (20 Euro)<br>
+                <input type="number" ng-model="pauschale.days" placeholder="0"/>Tage<br>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Der Preis für die Reise beläuft sich auf:</h3>
+            </div>
+            <div class="panel-body">
+                {{cost.total}}
+            </div>
         </div>
     </div>
 </form>
