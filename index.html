@@ -58,6 +58,9 @@
                     <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveOther" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
                 </div>
             </div>
+            <div class="panel-footer">
+                Zwischenergebniss: {{driveTotal()}} Euro
+            </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -76,6 +79,9 @@
                     <div class="col-sm-4">Übernachtung ohne Frühstück: <br></div>
                     <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepWithoutBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
                 </div>
+            </div>
+            <div class="panel-footer">
+                Zwischenergebniss: {{sleepTotal()}} Euro
             </div>
         </div>
         <div class="panel panel-default">
@@ -99,6 +105,9 @@
                 Pauschale bei Übernahme durch Arbeitgeber (20 Euro)<br>
                 <input type="number" min="0" ng-model="pauschaleCost.pauschaleDays" value="0" ng-model-options="{ getterSetter: true }" />Tage<br>
             </div>
+            <div class="panel-footer">
+                Zwischenergebniss: {{pauschaleTotal()}} Euro
+            </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -115,7 +124,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Pauschalkosten:</div>
-                    <div class="col-sm-3">{{pauschaleTotal()}} Euro</div>
+                    <div class="col-sm-5">{{pauschaleTotal()}} Euro</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Totalkosten:</div>
