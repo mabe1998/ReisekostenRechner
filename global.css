@@ -1,2 +1,5 @@
 .page-break	{ page-break-before: always; }
 
+.min_20 {
+    min-width: 20em;
+}
