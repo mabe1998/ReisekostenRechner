@@ -10,8 +10,11 @@
 <body>
 <form ng-controller="CalculationController" ng-app="calculation">
     <div class="container-fluid">
-        <h1>Reisekosten Inland</h1>
-        <div class="panel panel-default">
+        <div class="row">
+            <div class="col-sm-3"><img src="images/SprinteinsLogo.jpg"></div>
+            <div class="col-sm-4"><h3>Reisekosten Inland</h3></div>
+        </div>
+            <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Eckdaten</h3>
             </div>
@@ -38,7 +41,6 @@
                 <h3 class="panel-title">Beförderung</h3>
             </div>
             <div class="panel-body">
-                Fortbewegungsmittel:<br><br>
                 <div class="row">
                     <div class="col-sm-2">Mit eigenem Fahrzeug:<br></div>
                     <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveCar" value="0" ng-model-options="{ getterSetter: true }" />km (á 0.30 Euro)<br></div>
