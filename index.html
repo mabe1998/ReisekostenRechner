@@ -1,152 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="scotchApp">
 <head>
     <meta charset="UTF-8">
     <title>Reisekostenrechner</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="./global.css" mce_href="./global.css" href="/global.css" mce_href="/global.css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
 <body>
-<form ng-controller="CalculationController" ng-app="calculation">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3"><img src="images/SprinteinsLogo.jpg"></div>
-            <div class="col-sm-4"><h3>Reisekosten Inland</h3></div>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Reisekosten</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#formular"> Formular</a></li>
+                <li><a href="#print"> Druckvorschau</a></li>
         </div>
-            <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Eckdaten</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-1">Name:<br></div>
-                    <div class="col-sm-1"><input type="text" ng-model="name" placeholder="Mustermann, Max"/><br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">Abreise:<br> <input type="date" ng-model="date.a" placeholder="tt.mm.yy"></div>
-                    <div class="col-sm-2"> Uhrzeit: <input type="time" ng-model="time.a" placeholder="hh:mm"><br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">Rückkehr:<br><input type="date" ng-model="date.b" placeholder="tt.mm.yy"></div>
-                    <div class="col-sm-2">Uhrzeit: <input type="time" ng-model="time.b" placeholder="hh:mm"><br></div>
-                </div>
-                Grund der Reise:<br><input type="text" size="50" ng-model="reason"/><br>
-                Reiseziel: <br><input type="text" size="50" ng-model="destination"/><br>
-            </div>
-        </div>
-        <div class="page-break"></div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Beförderung</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-2">Mit eigenem Fahrzeug:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveCar" value="0" ng-model-options="{ getterSetter: true }" />km (á 0.30 Euro)<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">Mit Bahn:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveTrain" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">Mit Taxi:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveTaxi" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">Mit Flugzeug:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.drivePlane" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">Sonstiges:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveOther" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
-                </div>
-            </div>
-            <div class="panel-footer">
-                Zwischenergebniss: {{driveTotal()}} Euro
-            </div>
-        </div>
-        <div class="page-break"></div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Übernachtungskosten</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-4">Übernachtung mit Frühstück (nicht ausgewiesen):<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepWithBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">Übernachtung mit Frühstück (wert ohne Frühstück):<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">Übernachtung ohne Frühstück: <br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepWithoutBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
-                </div>
-            </div>
-            <div class="panel-footer">
-                Zwischenergebniss: {{sleepTotal()}} Euro
-            </div>
-        </div>
-        <div class="page-break"></div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Pauschale für Mehraufwand für Verpflegung</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-3">Volle Reisetage á 24 Euro:<br></div>
-                    <div class="col-sm-3"><input type="number" min="0" ng-model="pauschaleCost.pauschaleFullday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">Erster Reisetag á 12 Euro:<br></div>
-                    <div class="col-sm-3"><input type="number" min="0" ng-model="pauschaleCost.pauschaleFirstday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">Letzter Reisetag á 12 Euro:<br></div>
-                    <div class="col-sm-3"> <input type="number" min="0" ng-model="pauschaleCost.pauschaleLastday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
-                </div>
-                <br>
-                Pauschale bei Übernahme durch Arbeitgeber (20 Euro)<br>
-                <input type="number" min="0" ng-model="pauschaleCost.pauschaleDays" value="0" ng-model-options="{ getterSetter: true }" />Tage<br>
-            </div>
-            <div class="panel-footer">
-                Zwischenergebniss: {{pauschaleTotal()}} Euro
-            </div>
-        </div>
-        <div class="page-break"></div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Preis:</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-3">Beförderungskosten:</div>
-                    <div class="col-xs-3">{{driveTotal()}} Euro</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-3">Übernachtungskosten:</div>
-                    <div class="col-xs-3">{{sleepTotal()}} Euro</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-3">Pauschalkosten:</div>
-                    <div class="col-xs-3">{{pauschaleTotal()}} Euro</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-3">Totalkosten:</div>
-                    <div class="col-xs-3">{{totalTotal()}} Euro</div>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <a href="#" onclick="window.print();">Drucken</a>
-            </div>
-        </div>
+    </nav>
+</header>
+    <div id="formular">
+
+        <div ng-view></div>
     </div>
-</form>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-<script type="text/javascript" src="./app.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

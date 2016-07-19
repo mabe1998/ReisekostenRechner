@@ -18,7 +18,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-1">Name:<br></div>
-                    <div class="col-sm-1">{{eckdaten.name()}}<br></div>
+                    <div class="col-sm-1"><input type="text" ng-model="eckdaten.name" placeholder="Mustermann, Max" ng-model-options="{ getterSetter: true }"/><br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Abreise:<br> <input type="eckdaten.date" ng-model="date.a" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>

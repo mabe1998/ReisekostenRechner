@@ -1,10 +1,54 @@
+var scotchApp = angular.module('scotchApp', ['ngRoute']);
+
+// configure our routes
+scotchApp.config(function($routeProvider) {
+    $routeProvider
+        
+        .when('/formular', {
+            templateUrl : 'formular.html',
+            controller  : 'calculationController'
+        })
+        
+        .when('/print', {
+            templateUrl : 'print.html',
+            controller  : 'calculationController'
+        })
+    
+});
+
+
 var app = angular.module('calculation', []);
-app.controller('CalculationController',['$scope', function($scope) {
+app.controller('calculationController',['$scope', function($scope) {
 
     var _driveTotal=0, _driveCar=0, _driveTrain=0, _driveTaxi=0, _drivePlane=0, _driveOther=0;
     var _sleepTotal=0, _sleepWithBreakfast=0, _sleepBreakfast=0, _sleepWithoutBreakfast=0;
     var _pauschaleTotal=0, _pauschaleFullday=0, _pauschaleFirstday=0, _pauschaleLastday=0, _pauschaleDays=0;
-        
+    var _name="", _dateA="", _timeA="", _dateB="", _timeB="", _reason="", _destination="";
+
+    
+    $scope.eckdaten={};
+    $scope.eckdaten.name = function(newValue){
+        return arguments.length ? (_name = newValue) : _name;
+    }
+    $scope.eckdaten.dateA = function(newValue){
+        return arguments.length ? (_dateA = newValue) : _dateA;
+    }
+    $scope.eckdaten.timeA = function(newValue){
+        return arguments.length ? (_timeA = newValue) : _timeA;
+    }
+    $scope.eckdaten.dateB = function(newValue){
+        return arguments.length ? (_dateB = newValue) : _dateB;
+    }
+    $scope.eckdaten.timeB = function(newValue){
+        return arguments.length ? (_timeB = newValue) : _timeB;
+    }
+    $scope.eckdaten.reason = function(newValue){
+        return arguments.length ? (_reason = newValue) : _reason;
+    }
+    $scope.eckdaten.destination = function(newValue){
+        return arguments.length ? (_destination = newValue) : _destination;
+    }
+    
     $scope.driveCost={};
     $scope.driveCost.driveTotal = function(newValue){
         return arguments.length ? (_driveTotal = newValue) : _driveTotal;
