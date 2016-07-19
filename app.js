@@ -4,7 +4,7 @@ app.controller('CalculationController',['$scope', function($scope) {
     var _driveTotal=0, _driveCar=0, _driveTrain=0, _driveTaxi=0, _drivePlane=0, _driveOther=0;
     var _sleepTotal=0, _sleepWithBreakfast=0, _sleepBreakfast=0, _sleepWithoutBreakfast=0;
     var _pauschaleTotal=0, _pauschaleFullday=0, _pauschaleFirstday=0, _pauschaleLastday=0, _pauschaleDays=0;
-    
+        
     $scope.driveCost={};
     $scope.driveCost.driveTotal = function(newValue){
         return arguments.length ? (_driveTotal = newValue) : _driveTotal;

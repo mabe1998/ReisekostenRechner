@@ -1,5 +1,26 @@
-.page-break	{ page-break-before: always; }
+input{
+    margin-bottom: 10px;
+}
 
-.min_20 {
-    min-width: 20em;
+@media print {
+    .page-break	{ page-break-before: inherit; }
+
+    .min_20 {
+        min-width: 20em;
+    }
+
+    body .container-fluid input{
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        border:0;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
 }
