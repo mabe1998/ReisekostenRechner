@@ -1,36 +1,48 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en" ng-app="scotchApp">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-7">
     <title>Reisekostenrechner</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="./global.css" mce_href="./global.css" href="/global.css" mce_href="/global.css" media="all" />
+    <!-- SCROLLS -->
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"/>
+
+    <!-- SPELLS -->
+    <!-- load angular and angular route via CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-    <script type="text/javascript" src="./app.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+    <script src="script.js"></script>
+    
 </head>
-<body>
+<body ng-app="scotchApp" ng-controller="mainController">
+
+<!-- HEADER AND NAVBAR -->
 <header>
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Reisekosten</a>
+                <a class="navbar-brand" href="/">Reisekostenrechner</a>
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#formular"> Formular</a></li>
-                <li><a href="#print"> Druckvorschau</a></li>
+                <li><a href="#about"><i class="fa fa-shield"></i> Formular</a></li>
+                <li><a href="#contact"><i class="fa fa-comment"></i> Druckansicht</a></li>
+            </ul>
         </div>
     </nav>
 </header>
-    <div id="formular">
 
-        <div ng-view></div>
-    </div>
+<!-- MAIN CONTENT AND INJECTED VIEWS -->
+<div id="main">
+
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div ng-view></div>
+
+</div>
+
 </body>
 </html>
