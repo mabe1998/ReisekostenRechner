@@ -5,7 +5,7 @@
     <title>Reisekostenrechner</title>
 </head>
 <body>
-<form ng-controller="calculationController" ng-app="calculation">
+<form ng-controller="CalculationController" ng-app="calculation">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3"><img src="images/SprinteinsLogo.jpg"></div>
@@ -21,12 +21,12 @@
                     <div class="col-sm-1"><input type="text" ng-model="eckdaten.name" placeholder="Mustermann, Max" ng-model-options="{ getterSetter: true }"/><br></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">Abreise:<br> <input type="eckdaten.date" ng-model="date.a" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
-                    <div class="col-sm-2"> Uhrzeit: <input type="eckdaten.time" ng-model="time.a" placeholder="hh:mm"><br ng-model-options="{ getterSetter: true }"/></div>
+                    <div class="col-sm-2">Abreise:<br> <input type="date" ng-model="eckdaten.dateA" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
+                    <div class="col-sm-2"> Uhrzeit: <input type="time" ng-model="eckdaten.timeA" placeholder="hh:mm"><br ng-model-options="{ getterSetter: true }"/></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">Rückkehr:<br><input type="eckdaten.date" ng-model="date.b" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
-                    <div class="col-sm-2">Uhrzeit: <input type="time" ng-model="time.b" placeholder="hh:mm" ng-model-options="{ getterSetter: true }"/><br></div>
+                    <div class="col-sm-2">Rückkehr:<br><input type="date" ng-model="eckdaten.dateB" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
+                    <div class="col-sm-2">Uhrzeit: <input type="time" ng-model="eckdaten.timeB" placeholder="hh:mm" ng-model-options="{ getterSetter: true }"/><br></div>
                 </div>
                 Grund der Reise:<br><input type="text" size="50" ng-model="eckdaten.reason" ng-model-options="{ getterSetter: true }"/><br>
                 Reiseziel: <br><input type="text" size="50" ng-model="eckdaten.destination" ng-model-options="{ getterSetter: true }"/><br>

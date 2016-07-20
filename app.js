@@ -1,24 +1,23 @@
 var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
-// configure our routes
 scotchApp.config(function($routeProvider) {
     $routeProvider
         
-        .when('/formular', {
+        .when('/', {
             templateUrl : 'formular.html',
-            controller  : 'calculationController'
+            controller  : 'CalculationController'
         })
         
         .when('/print', {
             templateUrl : 'print.html',
-            controller  : 'calculationController'
+            controller  : 'CalculationController'
         })
     
 });
 
 
 var app = angular.module('calculation', []);
-app.controller('calculationController',['$scope', function($scope) {
+app.controller('CalculationController',['$scope', function($scope) {
 
     var _driveTotal=0, _driveCar=0, _driveTrain=0, _driveTaxi=0, _drivePlane=0, _driveOther=0;
     var _sleepTotal=0, _sleepWithBreakfast=0, _sleepBreakfast=0, _sleepWithoutBreakfast=0;
