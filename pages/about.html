@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-7">
+    <title>Formular</title>
+</head>
+<body>
+<form ng-controller="aboutController" ng-app="scotchApp">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3"><img src="images/SprinteinsLogo.jpg"></div>
+            <div class="col-sm-4"><h3>Reisekosten Inland</h3></div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Eckdaten</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-1">Name:<br></div>
+                    <div class="col-sm-1"><input type="text" ng-model="eckdaten.name" placeholder="Mustermann, Max" ng-model-options="{ getterSetter: true }"/><br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Abreise:<br> <input type="text" ng-model="eckdaten.dateA" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
+                    <div class="col-sm-2">Uhrzeit: <input type="text" ng-model="eckdaten.timeA" placeholder="hh:mm" ng-model-options="{ getterSetter: true }"/><br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Rückkehr:<br><input type="text" ng-model="eckdaten.dateB" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
+                    <div class="col-sm-2">Uhrzeit: <input type="text" ng-model="eckdaten.timeB" placeholder="hh:mm" ng-model-options="{ getterSetter: true }"/><br></div>
+                </div>
+                Grund der Reise:<br><input type="text" size="50" ng-model="eckdaten.reason" ng-model-options="{ getterSetter: true }"/><br>
+                Reiseziel: <br><input type="text" size="50" ng-model="eckdaten.destination" ng-model-options="{ getterSetter: true }"/><br>
+            </div>
+        </div>
+        <div class="page-break"></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Beförderung</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-2">Mit eigenem Fahrzeug:<br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveCar" value="0" ng-model-options="{ getterSetter: true }" />km (á 0.30 Euro)<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Mit Bahn:<br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveTrain" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Mit Taxi:<br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveTaxi" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Mit Flugzeug:<br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.drivePlane" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">Sonstiges:<br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveOther" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                Zwischenergebniss: {{driveTotal()}} Euro
+            </div>
+        </div>
+        <div class="page-break"></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Übernachtungskosten</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-4">Übernachtung mit Frühstück (nicht ausgewiesen):<br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepWithBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">Übernachtung mit Frühstück (wert ohne Frühstück):<br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">Übernachtung ohne Frühstück: <br></div>
+                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepWithoutBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                Zwischenergebniss: {{sleepTotal()}} Euro
+            </div>
+        </div>
+        <div class="page-break"></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Pauschale für Mehraufwand für Verpflegung</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">Volle Reisetage á 24 Euro:<br></div>
+                    <div class="col-sm-3"><input type="number" min="0" ng-model="pauschaleCost.pauschaleFullday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">Erster Reisetag á 12 Euro:<br></div>
+                    <div class="col-sm-3"><input type="number" min="0" ng-model="pauschaleCost.pauschaleFirstday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">Letzter Reisetag á 12 Euro:<br></div>
+                    <div class="col-sm-3"> <input type="number" min="0" ng-model="pauschaleCost.pauschaleLastday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
+                </div>
+                <br>
+                Pauschale bei Übernahme durch Arbeitgeber (20 Euro)<br>
+                <input type="number" min="0" ng-model="pauschaleCost.pauschaleDays" value="0" ng-model-options="{ getterSetter: true }" />Tage<br>
+            </div>
+            <div class="panel-footer">
+                Zwischenergebniss: {{pauschaleTotal()}} Euro
+            </div>
+        </div>
+        <div class="page-break"></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Preis:</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3">Beförderungskosten:</div>
+                    <div class="col-xs-3">{{driveTotal()}} Euro</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">Übernachtungskosten:</div>
+                    <div class="col-xs-3">{{sleepTotal()}} Euro</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">Pauschalkosten:</div>
+                    <div class="col-xs-3">{{pauschaleTotal()}} Euro</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">Totalkosten:</div>
+                    <div class="col-xs-3">{{totalTotal()}} Euro</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+               Zum Drucken des Dokuments bitte zur Druckansicht oben in der Navigationsleiste wechseln
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

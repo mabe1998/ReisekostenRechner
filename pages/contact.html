@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-7">
+    <title>Druckansicht</title>
+</head>
+<body>
+    <form ng-controller="contactController" ng-app="scotchApp">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3"><img src="images/SprinteinsLogo.jpg"></div>
+                <div class="col-sm-4"><h3>Reisekosten Inland</h3></div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Eckdaten</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-1">Name:</div>
+                        <div class="col-sm-2">{{eckdaten.name()}}<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Abreise:<br> {{eckdaten.dateA()}}</div>
+                        <div class="col-sm-2"> Uhrzeit: {{eckdaten.timeA()}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Rückkehr:<br>{{eckdaten.dateB()}}</div>
+                        <div class="col-sm-2">Uhrzeit: {{eckdaten.timeB()}}<br></div>
+                    </div>
+                    Grund der Reise:<br>{{eckdaten.reason()}}<br>
+                    Reiseziel: <br>{{eckdaten.destination()}}<br>
+                </div>
+            </div>
+            <div class="page-break"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Beförderung</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-2">Mit eigenem Fahrzeug:</div>
+                        <div class="col-sm-4">{{driveCost.driveCar()}} km (á 0.30 Euro)<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Mit Bahn:</div>
+                        <div class="col-sm-4">{{driveCost.driveTrain()}} Euro<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Mit Taxi:</div>
+                        <div class="col-sm-4">{{driveCost.driveTaxi()}} Euro<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Mit Flugzeug:</div>
+                        <div class="col-sm-4">{{driveCost.drivePlane()}} Euro<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Sonstiges:</div>
+                        <div class="col-sm-4">{{driveCost.driveOther()}} Euro<br></div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    Zwischenergebniss: {{driveTotal()}} Euro
+                </div>
+            </div>
+            <div class="page-break"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Übernachtungskosten</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">Übernachtung mit Frühstück (nicht ausgewiesen):<br></div>
+                        <div class="col-sm-4">{{sleepCost.sleepWithBreakfast()}} Euro<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Übernachtung mit Frühstück (wert ohne Frühstück):<br></div>
+                        <div class="col-sm-4">{{sleepCost.sleepBreakfast()}} Euro<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Übernachtung ohne Frühstück: <br></div>
+                        <div class="col-sm-4">{{sleepCost.sleepWithoutBreakfast()}} Euro<br></div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    Zwischenergebniss: {{sleepTotal()}} Euro
+                </div>
+            </div>
+            <div class="page-break"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pauschale für Mehraufwand für Verpflegung</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3">Volle Reisetage á 24 Euro:<br></div>
+                        <div class="col-sm-3">{{pauschaleCost.pauschaleFullday()}} Tage<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">Erster Reisetag á 12 Euro:<br></div>
+                        <div class="col-sm-3">{{pauschaleCost.pauschaleFirstday()}} Tage<br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">Letzter Reisetag á 12 Euro:<br></div>
+                        <div class="col-sm-3">{{pauschaleCost.pauschaleLastday()}} Tage<br></div>
+                    </div>
+                    <br>
+                    Pauschale bei Übernahme durch Arbeitgeber (20 Euro)<br>
+                    {{pauschaleCost.pauschaleDays()}} Tage<br>
+                </div>
+                <div class="panel-footer">
+                    Zwischenergebniss: {{pauschaleTotal()}} Euro
+                </div>
+            </div>
+            <div class="page-break"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Preis:</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-3">Beförderungskosten:</div>
+                        <div class="col-xs-3">{{driveTotal()}} Euro</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">Übernachtungskosten:</div>
+                        <div class="col-xs-3">{{sleepTotal()}} Euro</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">Pauschalkosten:</div>
+                        <div class="col-xs-3">{{pauschaleTotal()}} Euro</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">Totalkosten:</div>
+                        <div class="col-xs-3">{{totalTotal()}} Euro</div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a href="#" onclick="window.print();">Drucken</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
