@@ -5,7 +5,7 @@
     <title>Reisekostenrechner</title>
 </head>
 <body>
-<form ng-controller="calculationController" ng-app="calculation">
+<form ng-controller="CalculationController" ng-app="calculation">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3"><img src="images/SprinteinsLogo.jpg"></div>
@@ -21,15 +21,15 @@
                     <div class="col-sm-1">{{eckdaten.name()}}<br></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">Abreise:<br> <input type="eckdaten.date" ng-model="date.a" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
-                    <div class="col-sm-2"> Uhrzeit: <input type="eckdaten.time" ng-model="time.a" placeholder="hh:mm"><br ng-model-options="{ getterSetter: true }"/></div>
+                    <div class="col-sm-2">Abreise:<br> {{eckdaten.dateA()}}</div>
+                    <div class="col-sm-2"> Uhrzeit: {{eckdaten.timeA()}}</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">Rückkehr:<br><input type="eckdaten.date" ng-model="date.b" placeholder="tt.mm.yy" ng-model-options="{ getterSetter: true }"/></div>
-                    <div class="col-sm-2">Uhrzeit: <input type="time" ng-model="time.b" placeholder="hh:mm" ng-model-options="{ getterSetter: true }"/><br></div>
+                    <div class="col-sm-2">Rückkehr:<br>{{eckdaten.dateB()}}</div>
+                    <div class="col-sm-2">Uhrzeit: {{eckdaten.timeB()}}<br></div>
                 </div>
-                Grund der Reise:<br><input type="text" size="50" ng-model="eckdaten.reason" ng-model-options="{ getterSetter: true }"/><br>
-                Reiseziel: <br><input type="text" size="50" ng-model="eckdaten.destination" ng-model-options="{ getterSetter: true }"/><br>
+                Grund der Reise:<br>{{eckdaten.reason()}}<br>
+                Reiseziel: <br>{{eckdaten.destination()}}<br>
             </div>
         </div>
         <div class="page-break"></div>
@@ -40,23 +40,23 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-2">Mit eigenem Fahrzeug:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveCar" value="0" ng-model-options="{ getterSetter: true }" />km (á 0.30 Euro)<br></div>
+                    <div class="col-sm-4">{{driveCost.driveCar()}} km (á 0.30 Euro)<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Mit Bahn:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveTrain" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                    <div class="col-sm-4">{{driveCost.driveTrain()}} Euro<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Mit Taxi:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveTaxi" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                    <div class="col-sm-4">{{driveCost.driveTaxi()}} Euro<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Mit Flugzeug:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.drivePlane" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                    <div class="col-sm-4">{{driveCost.drivePlane()}} Euro<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2">Sonstiges:<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="driveCost.driveOther" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                    <div class="col-sm-4">{{driveCost.driveOther()}} Euro<br></div>
                 </div>
             </div>
             <div class="panel-footer">
@@ -71,15 +71,15 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-4">Übernachtung mit Frühstück (nicht ausgewiesen):<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepWithBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                    <div class="col-sm-4">{{sleepCost.sleepWithBreakfast()}} Euro<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">Übernachtung mit Frühstück (wert ohne Frühstück):<br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                    <div class="col-sm-4">{{sleepCost.sleepBreakfast()}} Euro<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">Übernachtung ohne Frühstück: <br></div>
-                    <div class="col-sm-4"><input type="number" min="0" ng-model="sleepCost.sleepWithoutBreakfast" value="0" ng-model-options="{ getterSetter: true }" />Euro<br></div>
+                    <div class="col-sm-4">{{sleepCost.sleepWithoutBreakfast()}} Euro<br></div>
                 </div>
             </div>
             <div class="panel-footer">
@@ -94,19 +94,19 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-3">Volle Reisetage á 24 Euro:<br></div>
-                    <div class="col-sm-3"><input type="number" min="0" ng-model="pauschaleCost.pauschaleFullday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
+                    <div class="col-sm-3">{{pauschaleCost.pauschaleFullday()}} Tage<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">Erster Reisetag á 12 Euro:<br></div>
-                    <div class="col-sm-3"><input type="number" min="0" ng-model="pauschaleCost.pauschaleFirstday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
+                    <div class="col-sm-3">{{pauschaleCost.pauschaleFirstday()}} Tage<br></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">Letzter Reisetag á 12 Euro:<br></div>
-                    <div class="col-sm-3"> <input type="number" min="0" ng-model="pauschaleCost.pauschaleLastday" value="0" ng-model-options="{ getterSetter: true }" />Tage<br></div>
+                    <div class="col-sm-3">{{pauschaleCost.pauschaleLastday()}} Tage<br></div>
                 </div>
                 <br>
                 Pauschale bei Übernahme durch Arbeitgeber (20 Euro)<br>
-                <input type="number" min="0" ng-model="pauschaleCost.pauschaleDays" value="0" ng-model-options="{ getterSetter: true }" />Tage<br>
+                {{pauschaleCost.pauschaleDays()}} Tage<br>
             </div>
             <div class="panel-footer">
                 Zwischenergebniss: {{pauschaleTotal()}} Euro
